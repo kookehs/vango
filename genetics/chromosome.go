@@ -31,7 +31,8 @@ func (c *Chromosome) Fitness(t *Chromosome) {
 	f := algorithm.FuzzyStringSearch(c.genes, t.genes)
 
 	for i := 0; i < len(c.genes); i++ {
-		f -= float64((c.genes[i] - t.genes[i])) * float64((c.genes[i] - t.genes[i]))
+		d := int(c.genes[i]) - int(t.genes[i])
+		f -= float64(d * d)
 	}
 
 	c.fitness = f
